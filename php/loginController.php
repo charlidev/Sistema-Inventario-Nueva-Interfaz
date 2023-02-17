@@ -14,7 +14,12 @@
     if (sqlsrv_has_rows($stmt)) {
         header("Location: ../home.html");
     }else {
-        echo "Usuario o contraseña incorrectos";
+    ?>
+    <script src="js/loginPromtMEssageError.js"></script>
+    <?php
+        header("Location: ../index.html");
+    ?>
+    <?php
     }
     
     sqlsrv_free_stmt($stmt);

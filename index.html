@@ -17,17 +17,22 @@
                     <!-------Image-------->
                 </div>
                     <div class="col-md-6 right">
-                        <form class="needs-validation" method="post" action="php/loginController.php">
+                        <form class="needs-validation" method="post" action="php/loginController.php" novalidate>
                         <div class="input-box">
                             <header>¡Bienvenido (a)!</header>
                             <div class="input-field">
                                 <input type="text" class="input" id="email" required name="usuario" autocomplete="off">
                                 <label for="email">Usuario</label>
+                                
+                                <div class="invalid-feedback">Campo necesario.*</div>
                             </div>
+
                             <div class="input-field">
                                 <input type="password" class="input" id="password" required name="contraseña">
                                 <label for="password">Contraseña</label>
+                                <div class="invalid-feedback">Campo necesario.*</div>
                             </div>
+
                             <br>
                             <div class="input-field">
                                 <input type="submit" class="submit" name="btnIngresar" value="INICIAR SESIÓN">
@@ -38,5 +43,30 @@
             </div>
         </div>
     </div>
+
+
+
+
+    <script>
+        (function () {
+            'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.querySelectorAll('.needs-validation')
+
+            // Loop over them and prevent submission
+            Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+                })
+        })()
+    </script>
 </body>
 </html>

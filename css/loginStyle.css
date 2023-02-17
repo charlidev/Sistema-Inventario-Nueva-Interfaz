@@ -111,6 +111,13 @@ i{
     color: #fff;
 }
 
+.bad {
+	text-align: center;
+	width: 100%;
+	padding: 12px;
+	background-color: #a22;
+	color: #fff
+}
 @media only screen and (max-width: 768px){
     .side-image{
         border-radius: 10px 10px 0 0;
