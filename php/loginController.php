@@ -1,3 +1,4 @@
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <?php
     require_once 'db_connection.php';
 
@@ -14,12 +15,7 @@
     if (sqlsrv_has_rows($stmt)) {
         header("Location: ../home.html");
     }else {
-    ?>
-    <script src="js/loginPromtMEssageError.js"></script>
-    <?php
         header("Location: ../index.html");
-    ?>
-    <?php
     }
     
     sqlsrv_free_stmt($stmt);
