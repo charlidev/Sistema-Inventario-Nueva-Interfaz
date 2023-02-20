@@ -1,3 +1,4 @@
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <?php
     require_once 'db_connection.php';
 
@@ -14,7 +15,13 @@
     if (sqlsrv_has_rows($stmt)) {
         header("Location: ../home.html");
     }else {
-        echo "error";
+        echo "<script>
+            swal({
+                title: 'Error',
+                text: 'Usuario o contraseña incorrectos',
+                type: 'error',
+                confirmButtonText: 'Aceptar'});
+        </script>";
         header("Location: ../index.html");
     }
     
