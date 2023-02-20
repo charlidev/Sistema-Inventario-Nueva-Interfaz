@@ -1,6 +1,6 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <?php
-    require_once 'db_connection.php';
+    require 'db_connection.php';
 
     $tsql = "SELECT * FROM tblLogin WHERE Usuario = ? AND Contrasena = ?";
     $params = array($_POST['usuario'], $_POST['contraseña']);
@@ -13,16 +13,25 @@
     }
 
     if (sqlsrv_has_rows($stmt)) {
-        header("Location: ../home.html");
-    }else {
         echo "<script>
             swal({
-                title: 'Error',
-                text: 'Usuario o contraseña incorrectos',
-                type: 'error',
-                confirmButtonText: 'Aceptar'});
+            title: 'Bienvenido',
+            text: 'Inicio de sesión correcto',
+            type: 'success',
+            confirmButtonText: 'Aceptar'
+            }).then(() => {
+            window.location.href = '../home.html';
+            });
         </script>";
-        header("Location: ../index.html");
+    }else {
+        echo "<script>
+        swal({
+          title: 'Error',
+          text: 'Usuario o contraseña incorrectos',
+          type: 'error',
+          confirmButtonText: 'Aceptar'}).then(() => {
+          window.location.href = '../index.html';});
+        </script>";
     }
     
     sqlsrv_free_stmt($stmt);
