@@ -24,14 +24,19 @@
             });
         </script>";
     }else {
-        echo "<script>
-        swal({
-          title: 'Error',
-          text: 'Usuario o contraseña incorrectos',
-          type: 'error',
-          confirmButtonText: 'Aceptar'}).then(() => {
-          window.location.href = '../index.html';});
-        </script>";
+        // echo "<script>
+        // swal({
+        //   title: 'Error',
+        //   text: 'Usuario o contraseña incorrectos',
+        //   type: 'error',
+        //   confirmButtonText: 'Aceptar'}).then(() => {
+        //   window.location.href = '../index.html';});
+        // </script>";
+
+        echo '<script>
+            alert("Error, ususario o ontraseña incorrectos");
+            window.location.href="../index.html";
+        </script>';
     }
     
     sqlsrv_free_stmt($stmt);
