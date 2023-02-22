@@ -1,5 +1,5 @@
 <?php
-$serverName = "DESKTOP-GBQUMCE";
+$serverName = "DESKTOP-RFI1D63";
 $connectionInfo = array("Database"=>"Sistema_Inventario", "UID"=>"sa", "PWD"=>"12345");
 
 $conn = sqlsrv_connect($serverName, $connectionInfo);

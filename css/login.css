@@ -1,10 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
 *{
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    
 }
+
+
 .wrapper{
-    background: #ececec;
+    /* background: #ececec; */
+    background-image: url(../imgs/abasolo.png);
+    background-repeat: no-repeat;
+    background-position: left;
+    position: relative;
+    background-size: cover;
+    min-height: 100vh; 
     padding: 0 20px 0 20px;
 }
+
 .main{
     display: flex;
     justify-content: center;
@@ -139,5 +151,8 @@ i{
     .row{
         max-width: 420px;
         width: 100%;
+    }
+    .wrapper{
+        background: #ececec;
     }
 }
