@@ -5,40 +5,36 @@
     $tsql = "SELECT * FROM tblLogin WHERE Usuario = ? AND Contrasena = ?";
     $params = array($_POST['usuario'], $_POST['contraseña']);
 
-    $stmt = sqlsrv_query($conn, $tsql, $params);
+    $stmt = sqlsrv_query($connection, $tsql, $params);
 
     if ($stmt === false) {
-        echo "Error en la consulta.";
-        die(print_r(sqlsrv_errors(), true));
+        $errors = sqlsrv_errors();
+        echo "Error en la consulta. Detalles: <br>";
+        foreach ($errors as $error) {
+            echo "Código: " . $error['code'] . ", Mensaje: " . $error['message'] . "<br>";
+        }
+        die();
     }
 
     if (sqlsrv_has_rows($stmt)) {
+        header("Location: ../home.html");
+        exit();
+    }else{
         echo "<script>
+          document.addEventListener('DOMContentLoaded', function() {
             swal({
-            title: 'Bienvenido',
-            text: 'Inicio de sesión correcto',
-            type: 'success',
+            title: 'Error',
+            text: 'Usuario o contraseña incorrectos',
+            type: 'error',
             confirmButtonText: 'Aceptar'
             }).then(() => {
-            window.location.href = '../home.html';
-            });
-        </script>";
-    }else {
-        // echo "<script>
-        // swal({
-        //   title: 'Error',
-        //   text: 'Usuario o contraseña incorrectos',
-        //   type: 'error',
-        //   confirmButtonText: 'Aceptar'}).then(() => {
-        //   window.location.href = '../index.html';});
-        // </script>";
-
-        echo '<script>
-            alert("Error, ususario o ontraseña incorrectos");
-            window.location.href="../index.html";
-        </script>';
-    }
-    
+                window.location.href = '../index.html';
+            });;
+          });
+    </script>";
+    }  
+    // sqlsrv_free_stmt($stmt);
     sqlsrv_free_stmt($stmt);
-    sqlsrv_close($conn);
+    sqlsrv_close($connection);
 ?>
+

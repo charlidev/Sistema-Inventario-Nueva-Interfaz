@@ -1,13 +1,9 @@
 <?php
-$serverName = "DESKTOP-RFI1D63";
+//Nombre del servidor de la base de datos
+$serverName = "DESKTOP-GBQUMCE";
+//Información de la base de datos
 $connectionInfo = array("Database"=>"Sistema_Inventario", "UID"=>"sa", "PWD"=>"12345");
+//Se establece la conexión a la base de datos
+$connection = sqlsrv_connect($serverName, $connectionInfo);
 
-$conn = sqlsrv_connect($serverName, $connectionInfo);
-
-if ($conn) {
-  echo "Conexión establecida.";
-} else {
-  echo "Conexión no se pudo establecer.";
-  die(print_r(sqlsrv_errors(), true));
-}
 ?>
