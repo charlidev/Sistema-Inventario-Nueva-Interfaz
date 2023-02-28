@@ -1,5 +1,6 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <?php
+    session_start();
     require 'db_connection.php';
 
     $tsql = "SELECT * FROM tblLogin WHERE Usuario = ? AND Contrasena = ?";
@@ -17,9 +18,10 @@
     }
 
     if (sqlsrv_has_rows($stmt)) {
+        $_SESSION['loggedin'] = true;
         header("Location: ../home.html");
         exit();
-    }else{
+    } else {
         echo "<script>
           document.addEventListener('DOMContentLoaded', function() {
             swal({
@@ -37,4 +39,3 @@
     sqlsrv_free_stmt($stmt);
     sqlsrv_close($connection);
 ?>
-
